@@ -1,0 +1,230 @@
+/*menu*/
+* {
+  text-decoration: none;
+  margin:0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #1e1e1e;
+  background-image: url(https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2F4.bp.blogspot.com%2F--U5WM3qlEpQ%2FUyC0mBK7D0I%2FAAAAAAAB63M%2FELbiM-ziI4M%2Fs1600%2F%2525E3%252582%2525B8%2525E3%252583%2525A3%2525E3%252583%2525BC%2525E3%252583%25259E%2525E3%252583%2525B3%2525E2%252598%252586%2525E3%252583%252589%2525E3%252583%252583%2525E3%252582%2525B0-843445-www.kaifineart.com-3.jpg&f=1&nofb=1);/*ПОМЕНЯЙ ЗАДНИЙ ФОН*/
+  background-size: cover;
+  height: 100vh;
+  font-family: "Raleway", sans-serif;
+  letter-spacing: 1px;
+}
+h1 {
+  text-align: center;
+  color: #fff;
+  padding-top: 20px;
+}
+h3 {
+  text-align: center;
+  color: rgba(272,85,28);
+  padding-top: 20px;
+}
+ul {
+  list-style: none;
+}
+
+nav {
+  height: 48px;
+  margin: 40px auto;
+  background-color: rgba(23, 23, 50, 0.7);
+  text-align: center;
+  border-radius: 4px;
+}
+.main {
+  display: flex;
+  justify-content: center;
+}
+/*.main > li {*/
+/*  margin: 0 2%;*/
+/*}*/
+.main > li a{
+  border-left:1px solid rgba(23, 23, 50, 1);
+}
+a {
+  text-decoration: none;
+  color: #ffe;
+  text-transform: capitalize;
+  font-family: monospace;
+  display: block;
+  padding: 10px 10px;
+  font-size: 18px;
+  min-width: 200px;/*изменение меню при масштабирования*/
+  max-width: 200px;
+  transition: background-color 0.5s ease-in-out;
+  font-family: "Raleway", sans-serif;
+}
+
+/*a:hover  {*/
+/*  background-color: #631818;*/
+/*}*/
+
+.drop li {
+  opacity: 0;
+  transform-origin: top center;
+}
+
+.drop li a {
+  background-color: rgba(23, 23, 50, 0.7);
+  padding: 8px 0;
+}
+/*------------- menu3 animation -------------------*/
+
+.main li:hover .menu3 li:first-of-type {
+  animation: menu5 0.3s ease-in-out forwards;
+  animation-delay: 0.3s;
+}
+
+.main li:hover .menu3 li:nth-of-type(2) {
+  animation: menu3 0.3s ease-in-out forwards;
+  animation-delay: 0.6s;
+}
+
+.main li:hover .menu3 li:nth-of-type(3) {
+  animation: menu3 0.3s ease-in-out forwards;
+  animation-delay: 0.9s;
+}
+
+.main li:hover .menu3 li:last-of-type {
+  animation: menu3 0.3s ease-in-out forwards;
+  animation-delay: 1.2s;
+}
+
+@keyframes menu3 {
+  0% {
+    opacity: 0;
+    transform: rotateX(-90deg);
+  }
+  100% {
+    opacity: 1;
+    transform: rotateX(0);
+  }
+}
+
+/*------------- menu4 animation -------------------*/
+
+.main li:hover .menu4 li:first-of-type {
+  animation: menu4 0.3s ease-in-out forwards;
+  animation-delay: 0.3s;
+}
+
+.main li:hover .menu4 li:nth-of-type(2) {
+  animation: menu4 0.3s ease-in-out forwards;
+  animation-delay: 0.6s;
+}
+
+.main li:hover .menu4 li:nth-of-type(3) {
+  animation: menu4 0.3s ease-in-out forwards;
+  animation-delay: 0.9s;
+}
+
+.main li:hover .menu4 li:last-of-type {
+  animation: menu4 0.3s ease-in-out forwards;
+  animation-delay: 1.2s;
+}
+
+@keyframes menu4 {
+  0% {
+    opacity: 0;
+    transform: rotateX(-90deg);
+  }
+  100% {
+    opacity: 1;
+    transform: rotateX(0);
+  }
+}
+
+/*------------- menu5 animation -------------------*/
+
+.main li:hover .menu5 li:first-of-type {
+  animation: menu5 0.3s ease-in-out forwards;
+  animation-delay: 0.3s;
+}
+
+.main li:hover .menu5 li:nth-of-type(2) {
+  animation: menu5 0.3s ease-in-out forwards;
+  animation-delay: 0.6s;
+}
+
+.main li:hover .menu5 li:nth-of-type(3) {
+  animation: menu5 0.3s ease-in-out forwards;
+  animation-delay: 0.9s;
+}
+
+.main li:hover .menu5 li:last-of-type {
+  animation: menu5 0.3s ease-in-out forwards;
+  animation-delay: 1.2s;
+}
+
+@keyframes menu5 {
+  0% {
+    opacity: 0;
+    transform: rotateX(-90deg);
+  }
+  100% {
+    opacity: 1;
+    transform: rotateX(0);
+  }
+}
+
+/*------------- menu6 animation -------------------*/
+
+.main li:hover .menu6 li:first-of-type {
+  animation: menu6 0.3s ease-in-out forwards;
+  animation-delay: 0.3s;
+}
+
+.main li:hover .menu6 li:nth-of-type(2) {
+  animation: menu6 0.3s ease-in-out forwards;
+  animation-delay: 0.6s;
+}
+
+.main li:hover .menu6 li:nth-of-type(3) {
+  animation: menu6 0.3s ease-in-out forwards;
+  animation-delay: 0.9s;
+}
+
+.main li:hover .menu6 li:last-of-type {
+  animation: menu6 0.3s ease-in-out forwards;
+  animation-delay: 1.2s;
+}
+
+@keyframes menu6 {
+  0% {
+    opacity: 0;
+    transform: rotateX(-90deg);
+  }
+  100% {
+    opacity: 1;
+    transform: rotateX(0);
+  }
+}
+
+/* my button style */
+.white-mode {
+  text-decoration: none;
+  padding: 7px 10px;
+  background-color: #122;
+  border-radius: 3px;
+  color: #fff;
+  transition: 0.35s ease-in-out;
+  position: absolute;
+  left: 15px;
+  bottom: 15px;
+  font-family: sans-serif;
+}
+
+.white-mode:hover {
+  background-color: #fff;
+  color: #122;
+}
+/*block*/
+.card
+{
+  width: 32%;
+  margin-left: 14px;
+}
