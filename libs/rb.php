@@ -744,11 +744,11 @@ class RPDO implements Driver
 	}
 
 	/**
-	 * Constructor. You may either specify dsn, user and password or
+	 * Constructor. You may either specify dsn, users and password or
 	 * just give an existing PDO connection.
 	 *
 	 * Examples:
-	 *    $driver = new RPDO($dsn, $user, $password);
+	 *    $driver = new RPDO($dsn, $users, $password);
 	 *    $driver = new RPDO($existingConnection);
 	 *
 	 * @param string|object $dsn  database connection string
@@ -769,7 +769,7 @@ class RPDO implements Driver
 			$this->dsn = $this->getDatabaseType();
 		} else {
 			$this->dsn = $dsn;
-			$this->connectInfo = array( 'pass' => $pass, 'user' => $user );
+			$this->connectInfo = array( 'pass' => $pass, 'users' => $user );
 		}
 
 		//PHP 5.3 PDO SQLite has a bug with large numbers:
@@ -839,7 +839,7 @@ class RPDO implements Driver
 	{
 		if ( $this->isConnected ) return;
 		try {
-			$user = $this->connectInfo['user'];
+			$user = $this->connectInfo['users'];
 			$pass = $this->connectInfo['pass'];
 			$this->pdo = new \PDO(
 				$this->dsn,
@@ -3898,7 +3898,7 @@ interface QueryWriter
 	 *
 	 * 00 - 80: normal data types
 	 * 80 - 99: special data types, only scan/code if requested
-	 * 99     : specified by user, don't change
+	 * 99     : specified by users, don't change
 	 */
 	const C_DATATYPE_RANGE_SPECIAL   = 80;
 	const C_DATATYPE_RANGE_SPECIFIED = 99;
@@ -7581,7 +7581,7 @@ class Fluid extends Repository
 	 *
 	 * Note that this method raises a custom exception if the bean
 	 * is not an instance of OODBBean. Therefore it does not use
-	 * a type hint. This allows the user to take action in case
+	 * a type hint. This allows the users to take action in case
 	 * invalid objects are passed in the list.
 	 *
 	 * @param OODBBean $bean         bean to process
@@ -7834,7 +7834,7 @@ class Frozen extends Repository
 	 *
 	 * Note that this method raises a custom exception if the bean
 	 * is not an instance of OODBBean. Therefore it does not use
-	 * a type hint. This allows the user to take action in case
+	 * a type hint. This allows the users to take action in case
 	 * invalid objects are passed in the list.
 	 *
 	 * @param OODBBean $bean         bean to process
@@ -8604,7 +8604,7 @@ namespace RedBeanPHP {
 /**
  * RedBeanPHP Finder.
  * Service class to find beans. For the most part this class
- * offers user friendly utility methods for interacting with the
+ * offers users friendly utility methods for interacting with the
  * OODB::find() method, which is rather complex. This class can be
  * used to find beans using plain old SQL queries.
  *
@@ -10437,7 +10437,7 @@ class Facade
 	 *
 	 * @param string      $key    ID for the database
 	 * @param string      $dsn    DSN for the database
-	 * @param string      $user   user for connection
+	 * @param string      $user   users for connection
 	 * @param NULL|string $pass   password for connection
 	 * @param bool        $frozen whether this database is frozen or not
 	 *
@@ -12671,7 +12671,7 @@ class DispenseHelper
 			$type = $typeOrBeanArray;
 		}
 
-		if ( !preg_match( '/^[a-z0-9]+$/', $type ) ) {
+		if ( !preg_match( '/^[a-z,0-9,_]+$/', $type ) ) {
 			throw new RedException( 'Invalid type: ' . $type );
 		}
 

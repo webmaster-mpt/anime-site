@@ -1,12 +1,13 @@
 <?php
 require "db.php";
-?>
-<?php if (isset($_SESSION['logged_user'])):?>
+$items = R::getAll( "SELECT * FROM `anime`" );
+if (isset($_SESSION['logged_user'])){?>
     <link rel="stylesheet" href="/css/styles.css">
-    <? require "header.php"?>
-    <? require "content.php"?>
-    <? require "footer.php"?>
-<?php else :?>
+    <?php
+        require "header.php";
+        require "content.php";
+        require "footer.php";
+} else {?>
     <link rel = "stylesheet" href = "/css/styles.css">
     <nav>
         <ul class="main">
@@ -37,6 +38,7 @@ require "db.php";
         </ul>
     </nav>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <a href="admin/index.php">Админка</a>
     <div class="container">
         <div class="text">
             <br><br>
@@ -56,27 +58,32 @@ require "db.php";
                         <h4 class="my-0 font-weight-normal">Наруто: Весна юности Рока Ли</h4>
                     </div>
                     <div class="card-body">
-                        <img src="/img/11.jpg" class="img-thumbnail">
-                        <ul class="list-unstyled mt-3 mb-4">Наруто: Весна юности Рока Ли
-                            <li style="font-family: cursive;">Статус:вышел</li>
-                            <li style="font-family: cursive;">Год:2012</li>
-                            <li style="font-family: cursive;">Возрастной рейтинг:PG-13 (от 13 лет)</li>
-                            <li style="font-family: cursive;">Жанр:Комедия, Пародия, Экшен</li>
-                            <li style="font-family: cursive;">Режиссер:Масахико Мурата</li>
-                            <li style="font-family: cursive;">Тип:Сериал</li>
-                            <li style="font-family: cursive;">Серии:51</li>
-                            <li style="font-family: cursive;">Студия:Studio Pierrot </li>
-                            <li style="font-family: cursive;">Первоисточник: Манга </li>
-                            <li style="font-family: cursive;">Перевод: Одноголосый</li>
-                            <li style="font-family: cursive;">Озвучка: Shiza Project</li>
-                            <li style="font-family: cursive;">Добро пожаловать в Деревню Скрытого Листа! Деревня, где живет звезда сериала «Наруто», Наруто Узумаки.
-                                Каждый день сильные и бесстрашные ниндзя выполняют миссии и учатся, чтобы отточить свои навыки.
-                                Наш главный герой — один из этих ниндзя... но это не Наруто! Это синоби, который не может использовать ниндзюцу — Рок Ли!
-                                Несмотря на это, у Ли есть мечта: он упорно тренируется каждый день, чтобы усовершенствовать свои боевые навыки и стать великолепным ниндзя!
-                                Под вспыльчивой опекой своего учителя, Майто Гая, он работает рядом со своими товарищами по команде — Тэн-Тэн и Нэджи Хюгой.
-                                Наблюдать за тренировками и участвовать в миссиях вместе с Рок Ли — это и есть приключения!</li>
+                        <?php foreach ($items as $item){
+                            $status = R::getRow('SELECT name FROM `status` WHERE `id` = '.$item['status_id']);
+                            $age_raiting = R::getRow('SELECT name FROM `age_raiting` WHERE `id` = '.$item['age_raiting_id']);
+                            $producer = R::getRow('SELECT name FROM `producer` WHERE `id` = '.$item['producer_id']);
+                            $type = R::getRow('SELECT name FROM `type` WHERE `id` = '.$item['type_id']);
+                            $studio = R::getRow('SELECT name FROM `studio` WHERE `id` = '.$item['studio_id']);
+                            $original_source = R::getRow('SELECT name FROM `original_source` WHERE `id` = '.$item['original_source_id']);
+                            $translation = R::getRow('SELECT name FROM `translation` WHERE `id` = '.$item['translation_id']);
+                            $voice_acting = R::getRow('SELECT name FROM `voice_acting` WHERE `id` = '.$item['voice_acting_id']);?>
+                        <img src="/img/<?= $item['poster'] ?>" class="img-thumbnail">
+                        <ul class="list-unstyled mt-3 mb-4"><?= $item['name'] ?>
+                            <li style="font-family: cursive;">Статус: <?= $status['name'] ?></li>
+                            <li style="font-family: cursive;">Год: <?= $item['year'] ?></li>
+                            <li style="font-family: cursive;">Возрастной рейтинг: <?= $age_raiting['name'] ?></li>
+                            <li style="font-family: cursive;">Жанр: <?= $item['ganre'] ?></li>
+                            <li style="font-family: cursive;">Режиссер: <?= $producer['name'] ?></li>
+                            <li style="font-family: cursive;">Тип: <?= $type['name'] ?></li>
+                            <li style="font-family: cursive;">Серии: <?= $item['series'] ?></li>
+                            <li style="font-family: cursive;">Студия: <?= $studio['name'] ?></li>
+                            <li style="font-family: cursive;">Первоисточник: <?= $original_source['name'] ?></li>
+                            <li style="font-family: cursive;">Перевод: <?= $translation['name'] ?></li>
+                            <li style="font-family: cursive;">Озвучка: <?= $voice_acting['name'] ?></li>
+                            <li style="font-family: cursive;">Описание: <?= $item['desсription'] ?></li>
                         </ul>
-                        <a href="/video/Naruto.php"><button type="button"class="btn btn-lg btn-block btn-outline-primary">Смотреть</button></a>
+                        <?php } ?>
+                        <a href="/video/Naruto.php" class="btn btn-lg btn-block btn-outline-primary">Смотреть</a>
                     </div>
                 </div>
                 <div class="card mb-4 shadow-sm">
@@ -162,5 +169,4 @@ require "db.php";
             </div>
         </div>
     </div>
-    <? require "footer.php"?>
-<?php endif;?>
+<?php require "footer.php"; } ?>

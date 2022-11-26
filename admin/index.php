@@ -1,0 +1,11 @@
+<a href="users/index.php">User</a><br><br>
+<a href="studio/index.php">studio</a><br><br>
+<a href="status/index.php">status</a><br><br>
+<a href="producer/index.php">producer</a><br><br>
+<a href="translation/index.php">translation</a><br><br>
+<a href="type/index.php">type</a><br><br>
+<a href="anime/index.php">anime</a><br><br>
+<a href="original_source/index.php">original_source</a><br><br>
+<a href="voice_acting/index.php">voice_acting</a><br><br>
+<a href="age_raiting/index.php">age_raiting</a><br><br>
+<a href="/index.php">Главная</a><br><br>
