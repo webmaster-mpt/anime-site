@@ -1,18 +1,17 @@
 <?php
 require "../../db.php";
 $data = $_POST;
-$table = 'voice_acting';
+$table = basename(dirname(__FILE__));
 if (isset($data['do_create']))
 {
-    //здесь регистрирует
     $errors = array();
-    if (trim($data['name'])=='')
+    if (trim($data['name']) == '')
     {
         $errors[] = 'Введите название';
     }
     if (R::count($table,"name = ?",array($data['name']))>0)
     {
-        $errors[] = 'Пользователь с таким ником уже существует!';
+        $errors[] = 'Такое название уже есть!';
     }
     if (empty($errors))
     {
@@ -33,7 +32,7 @@ if (isset($data['do_create']))
     <h1>Озвучка</h1>
     <div class="container">
             <form method="post">
-                <input type="name" name="name" value="<?php echo @$data['name'];?>" id="name" placeholder="Название"><br><br>
+                <input type="text" name="name" value="<?= @$data['name']?>" placeholder="Название"><br><br>
                 <input name="do_create" type="submit" value="Добавить"/>
                 <a href="/admin/<?= $table ?>/index.php">Назад</a>
             </form>

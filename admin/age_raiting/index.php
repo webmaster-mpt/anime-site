@@ -1,18 +1,24 @@
 <?php
 require "../../db.php";
-$tables = R::getAll( "SELECT * FROM `age_raiting`" );
+
+$table = basename(dirname(__FILE__));
+$rows = R::getAll( "SELECT * FROM `age_raiting`" );
 ?>
 <link rel="stylesheet" href="../../css/table.css">
 <?php
-    if (!empty($tables)){ ?>
+    if (!empty($rows)){ ?>
         <table border="1">
             <tr>
                 <th>Название</th>
             </tr>
             <?php
-            foreach ($tables as $table){ ?>
+            foreach ($rows as $row){ ?>
             <tr>
-                <td><?= $table['name'] ?></td>
+                <td><?= $rows['name'] ?></td>
+                <td>
+                    <a href="/admin/<?= $table ?>/update.php?id=<?= $row['id'] ?>" class="btn btn-light">Редактировать</a><br>
+                    <a href="?type=delete&id=<?= $row['id']?>" class="btn btn-light">Удалить</a>
+                </td>
             </tr>
             <?php } ?>
         </table>

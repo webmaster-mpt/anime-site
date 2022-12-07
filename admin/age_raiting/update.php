@@ -2,7 +2,8 @@
 require "../../db.php";
 $data = $_POST;
 $table = basename(dirname(__FILE__));
-if (isset($data['do_create']))
+$get_rows = R::find($table, 'id='. $_GET['id']);
+if (isset($data['do_update']))
 {
     //здесь регистрирует
     $errors = array();
@@ -16,10 +17,10 @@ if (isset($data['do_create']))
     }
     if (empty($errors))
     {
-        $create = R::dispense($table);
-        $create->name = $data['name'];
-        R::store($create);
-        echo 'Добавили!';
+        $update = R::load($table,$_GET['id']);
+        $update->name = $data['name'];
+        R::store($update);
+        echo 'Изменили!';
         header("Location: /admin/". $table . " /index.php");
 
     }else
@@ -30,12 +31,14 @@ if (isset($data['do_create']))
 ?>
 <link rel="stylesheet" href="../../css/form.css">
 <body>
-    <h1>Возрастной рейтинг</h1>
-    <div class="container">
-            <form method="post">
-                <input type="name" name="name" value="<?php echo @$data['name'];?>" id="name" placeholder="Название"><br><br>
-                <input name="do_create" type="submit" value="Добавить"/>
-                <a href="/admin/<?= $table ?>/index.php">Назад</a>
-            </form>
-    </div>
+<h1>Первоисточник</h1>
+<div class="container">
+    <form method="post">
+        <?php foreach ($get_rows as $get_row) { ?>
+        <input type="name" name="name" value="<?= $get_row->name,@$data['name'];?>" id="name" placeholder="Название"><br><br>
+        <?php } ?>
+        <input name="do_update" type="submit" value="Изменить"/>
+        <a href="/admin/<?= $table ?>/index.php">Назад</a>
+    </form>
+</div>
 </body>

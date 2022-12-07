@@ -1,7 +1,7 @@
 <?php
 require "../../db.php";
 $data = $_POST;
-$table = 'users';
+$table = basename(dirname(__FILE__));
 if (isset($data['do_signup']))
 {
     //здесь регистрирует
