@@ -17,13 +17,13 @@ if (isset($data['do_create']))
 //    var_dump($_FILES['poster']['name']);die();
     //здесь регистрирует
     $errors = array();
-    if (trim($data['tag_name']) == '')
-    {
-        $errors[] = 'Добавьте название группы';
-    }
     if (trim($_FILES['poster']['name']) == '')
     {
         $errors[] = 'Добавьте постер';
+    }
+    if (trim($data['tag_name'])=='')
+    {
+        $errors[] = 'Введите группу';
     }
     if (trim($data['name'])=='')
     {
@@ -86,8 +86,8 @@ if (isset($data['do_create']))
     if (empty($errors))
     {
         $create = R::dispense($table);
-        $create->tag_name = $data['tag_name'];
         $create->poster = $_FILES['poster']['name'];
+        $create->tag_name = $data['tag_name'];
         $create->name = $data['name'];
         $create->status_id = $data['status_id'];
         $create->year = $data['year'];
@@ -126,7 +126,7 @@ if (isset($data['do_create']))
             <label>Постер</label><br>
             <input type="file" name="poster" value="<?= @$data['poster'] ?>"><br><br>
             <label>Группа</label><br>
-            <input type="text" name="tag_name" value="<?php echo @$data['tag_name'];?>" placeholder="Группа"><br><br>
+            <input type="text" name="tag_name" value="<?php echo @$data['tag_name'];?>" placeholder="Название"><br><br>
             <label>Название</label><br>
             <input type="text" name="name" value="<?php echo @$data['name'];?>" placeholder="Название"><br><br>
             <label>Статус</label><br>
