@@ -9,3 +9,15 @@
  * сообщество;
  * авторизация/регистрация;
  * админка для добавления новых аниме.
+
+# anime-site
+My first anime viewing site!
+
+Features:
+ * browsing anime(under modification);
+ * catalog selection;
+ * announcements;
+ * help;
+ * community;
+ * authorization/registration;
+ * admin area to add new anime.
