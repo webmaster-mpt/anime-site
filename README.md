@@ -9,8 +9,7 @@
  * сообщество;
  * авторизация/регистрация;
  * админка для добавления новых аниме.
-
-# anime-site
+<br>
 My first anime viewing site!
 
 Features:
