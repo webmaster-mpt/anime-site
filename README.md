@@ -10,7 +10,7 @@
  * авторизация/регистрация;
  * админка для добавления новых аниме.
 <br>
-My first anime viewing site! New version: <a href"https://github.com/webmaster-mpt/anime-yii2">Anime-yii2</a>
+My first anime viewing site! New version: <a href="https://github.com/webmaster-mpt/anime-yii2">Anime-yii2</a>
 
 Features:
  * browsing anime(under modification);
